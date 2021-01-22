@@ -4,7 +4,8 @@ import ReusableStyles from './components/reusables/ReusableStyles';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import Signup from './components/Layout/auth/Signup';
+import Signup from './pages/auth/Signup';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
