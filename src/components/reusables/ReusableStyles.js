@@ -13,8 +13,6 @@ const ReusableStyles = () => {
        }
 
        .default_btn{
-           float: right;
-margin-right: 3em;
 background: var(--default_blue);
 color: #fff;
 border: none;

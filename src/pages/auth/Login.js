@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
-import signImg from '../../assets/images/signup.png';
-import  {registerUser}  from '../../redux/Actions/authActions';
-import { connect } from 'react-redux';
+import loginImg from '../../assets/images/login.png';
+import {loginUser} from '../../redux/Actions/authActions';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
- 
-const Signup = ({signup}) => {
+
+const Signup = ({login}) => {
 
     const Styles = () => {
         return (
@@ -21,8 +21,8 @@ const Signup = ({signup}) => {
                     }
 
                     .signupInner_imgHolder {
-                     width: 75%;    
-                    margin: 0 auto;
+                        width: 75%;
+                        margin: 0 auto;
                     }
 
                     .hasBgColor {
@@ -33,22 +33,21 @@ const Signup = ({signup}) => {
                         width: 75%;
                         margin: 0 auto;
                         padding: 1em;
-                
+
                     }
 
-                     .signupForm .btn_holder{
+                    .signupForm .btn_holder{
                         width: fit-content;
                         width: -moz-fit-content;
                         margin: 0 auto;
                     }
 
-
-                    .form_element{
+                    .form_element {
                         border-bottom: 1px solid lightgray;
                         width: 90%;
                     }
 
-                    .form_element input{
+                    .form_element input {
                         width: 85%;
                         outline: none;
                         padding: 0.6em;
@@ -57,16 +56,16 @@ const Signup = ({signup}) => {
                         transition: all 0.35s ease;
                     }
 
-                    .form_element i{
+                    .form_element i {
                         color: #95abdc;
                     }
 
-                    .form_element:hover,
-                    .form_element:focus{
+                    .form_element:focus,
+                    .form_element:hover {
                         border-bottom: 1px solid var(--default_blue);
                     }
 
-                       @media (max-width: 766px){
+                    @media (max-width: 766px){
                         .signupInner_formHolder{
                             width: 90%;
                         }
@@ -76,23 +75,22 @@ const Signup = ({signup}) => {
         )
     }
 
-
-    const [showpassword, setShowpassword] = useState(false);
+    const [showpassword,
+        setShowpassword] = useState(false);
 
     const formFields = {
-        username: '',
         email: '',
-        phonenumber: '',
         password: ''
     }
 
-    const [signupData, setSignupData] = useState(formFields);
+    const [loginData,
+        setLoginData] = useState(formFields);
 
-    const {username, email, phonenumber, password} = signupData;
+    const {email, password} = loginData;
 
     const handleChange = (e) => {
-        setSignupData({
-            ...signupData,
+        setLoginData({
+            ...loginData,
             [e.target.name]: e.target.value
         });
     }
@@ -100,15 +98,11 @@ const Signup = ({signup}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        console.log(signupData);
+        login(loginData);
 
-        signup(signupData);
-        
-        setSignupData({
-            ...signupData,
-            username: '',
+        setLoginData({
+            ...loginData,
             email: '',
-            phonenumber: '',
             password: ''
         });
     }
@@ -119,44 +113,55 @@ const Signup = ({signup}) => {
                 <Row className="signupInner w-100">
                     <Col md={6} className="hasBgColor align_only">
                         <div className="signupInner_imgHolder">
-                            <img src={signImg} alt="" className="w-100"/>
+                            <img src={loginImg} alt="" className="w-100"/>
                         </div>
                     </Col>
                     <Col md={6} className="align_only">
                         <div className="signupInner_formHolder">
                             <div className="">
                                 <h2 className="section__head--mid text_is_blue">
-                                    Sign up
+                                    Sign In
                                 </h2>
-                                <p className="section__text">Let's get started with your registration, shall we?</p>
+                                <p className="section__text">Welcom Back, Its been a while</p>
 
                                 <form className="signupForm" onSubmit={handleSubmit}>
                                     <div className="form_element mt-2">
-                                        <i className="fas fa-user pr-2"></i>
-                                        <input name="username" onChange={handleChange} value={username} type="text" placeholder="Username" required/>
-                                    </div>
-                                    
-                                    <div className="form_element mt-2">
                                         <i className="fas fa-envelope pr-2"></i>
-                                        <input name="email" onChange={handleChange} value={email} type="email" placeholder="Email" required/>
+                                        <input
+                                            name="email"
+                                            onChange={handleChange}
+                                            value={email}
+                                            type="email"
+                                            placeholder="Email"
+                                            required/>
                                     </div>
-                                    <div className="form_element mt-2">
-                                        <i className="fas fa-phone-alt pr-2"></i>
-                                        <input name="phonenumber" onChange={handleChange} value={phonenumber} type="tel" placeholder="Phone" required/>
-                                    </div>
+
                                     <div className="form_element mt-2">
                                         <i className="fas fa-lock pr-2"></i>
-                                        <input name="password" onChange={handleChange} value={password} type={showpassword ? 'text' : 'password'} placeholder="Password" required/>
-                                        <i className={showpassword ? 'fas fa-eye pointer' : 'fas fa-eye-slash pointer'} onClick={() => setShowpassword(!showpassword)}></i>
+                                        <input
+                                            name="password"
+                                            onChange={handleChange}
+                                            value={password}
+                                            type={showpassword
+                                            ? 'text'
+                                            : 'password'}
+                                            placeholder="Password"
+                                            required/>
+                                        <i
+                                            className={showpassword
+                                            ? 'fas fa-eye pointer'
+                                            : 'fas fa-eye-slash pointer'}
+                                            onClick={() => setShowpassword(!showpassword)}></i>
                                     </div>
 
                                     <div className="btn_holder mt-3">
-                                        <button type="submit" className="default_btn">Signup</button>
+                                        <button type="submit" className="default_btn">Login</button>
                                     </div>
+
                                 </form>
-                                  <div className="v_align mt-3">
-                                    <span className="section__text--mid">Already have an account? </span>
-                                    <Link to='/login'>Login Here</Link>
+                                <div className="v_align mt-3">
+                                    <span className="section__text--mid">Dont have an account? </span>
+                                    <Link to='/register'>Register Here</Link>
                                 </div>
                             </div>
                         </div>
@@ -169,8 +174,8 @@ const Signup = ({signup}) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return{
-        signup: (newUser) => dispatch(registerUser(newUser)) 
+    return {
+        login: (oldUser) => dispatch(loginUser(oldUser))
     }
 }
 
