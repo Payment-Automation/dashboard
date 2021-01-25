@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Signup from './pages/auth/Signup';
+import Login from './pages/auth/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <div className="App">
                 <Switch>
                     <Route exact path="/register" component={Signup}/>
+                    <Route exact path="/login" component={Login}/>
                 </Switch>
 
                 <ReusableStyles/>
