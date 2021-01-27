@@ -80,6 +80,7 @@ const Signup = ({signup}) => {
     const [showpassword, setShowpassword] = useState(false);
 
     const formFields = {
+        fullname: '',
         username: '',
         email: '',
         phonenumber: '',
@@ -88,7 +89,7 @@ const Signup = ({signup}) => {
 
     const [signupData, setSignupData] = useState(formFields);
 
-    const {username, email, phonenumber, password} = signupData;
+    const {fullname, username, email, phonenumber, password} = signupData;
 
     const handleChange = (e) => {
         setSignupData({
@@ -103,14 +104,6 @@ const Signup = ({signup}) => {
         console.log(signupData);
 
         signup(signupData);
-        
-        setSignupData({
-            ...signupData,
-            username: '',
-            email: '',
-            phonenumber: '',
-            password: ''
-        });
     }
 
     return (
@@ -131,6 +124,11 @@ const Signup = ({signup}) => {
                                 <p className="section__text">Let's get started with your registration, shall we?</p>
 
                                 <form className="signupForm" onSubmit={handleSubmit}>
+                                      <div className="form_element mt-2">
+                                        <i className="fas fa-user pr-2"></i>
+                                        <input name="fullname" onChange={handleChange} value={fullname} type="text" placeholder="Full Name" required/>
+                                    </div>
+
                                     <div className="form_element mt-2">
                                         <i className="fas fa-user pr-2"></i>
                                         <input name="username" onChange={handleChange} value={username} type="text" placeholder="Username" required/>
