@@ -5,6 +5,7 @@ import signImg from '../../assets/images/signup.png';
 import  {registerUser}  from '../../redux/Actions/authActions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+
  
 const Signup = ({signup}) => {
 
@@ -46,10 +47,11 @@ const Signup = ({signup}) => {
                     .form_element{
                         border-bottom: 1px solid lightgray;
                         width: 90%;
+                        margin: 0 auto;
                     }
 
                     .form_element input{
-                        width: 85%;
+                        width: 80%;
                         outline: none;
                         padding: 0.6em;
                         border: none;
@@ -66,9 +68,9 @@ const Signup = ({signup}) => {
                         border-bottom: 1px solid var(--default_blue);
                     }
 
-                       @media (max-width: 766px){
+                       @media (max-width: 768px){
                         .signupInner_formHolder{
-                            width: 90%;
+                            width: 100%;
                         }
                     }
                      `

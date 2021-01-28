@@ -36,7 +36,7 @@ const Signup = ({login}) => {
 
                     }
 
-                    .signupForm .btn_holder{
+                    .signupForm .btn_holder {
                         width: fit-content;
                         width: -moz-fit-content;
                         margin: 0 auto;
@@ -45,10 +45,11 @@ const Signup = ({login}) => {
                     .form_element {
                         border-bottom: 1px solid lightgray;
                         width: 90%;
+                        margin: 0 auto;
                     }
 
                     .form_element input {
-                        width: 85%;
+                        width: 80%;
                         outline: none;
                         padding: 0.6em;
                         border: none;
@@ -59,15 +60,13 @@ const Signup = ({login}) => {
                     .form_element i {
                         color: #95abdc;
                     }
-
                     .form_element:focus,
                     .form_element:hover {
                         border-bottom: 1px solid var(--default_blue);
                     }
-
-                    @media (max-width: 766px){
-                        .signupInner_formHolder{
-                            width: 90%;
+                    @media (max-width: 766px) {
+                        .signupInner_formHolder {
+                            width: 100%;
                         }
                     }
                      `
@@ -160,7 +159,8 @@ const Signup = ({login}) => {
 
                                 </form>
                                 <div className="v_align mt-3">
-                                    <span className="section__text--mid">Dont have an account? </span>
+                                    <span className="section__text--mid mr-2">Dont have an account?
+                                    </span>
                                     <Link to='/register'>Register Here</Link>
                                 </div>
                             </div>
@@ -180,9 +180,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    return{
-        isLoggedIn: state.auth.isLoggedIn
-    }
+    return {isLoggedIn: state.auth.isLoggedIn}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

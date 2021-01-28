@@ -1,6 +1,7 @@
 import {SIGNUP, LOGIN} from './types';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import cookie from 'react-cookies'
 
 const alert = (title, text, icon) => {
     Swal.fire({
@@ -14,28 +15,26 @@ const alert = (title, text, icon) => {
     });
 }
 
-// const storeToken = (token) => {
-//     cookies.set({name: "token", value: token, httpOnly: true, url: "/"});
-// }
+const storeToken = (token) => {
+   cookie.save('token', token, { httpOnly: true,  path: '/'})
+}
 
 export const registerUser = (newUser) => dispatch => {
     axios
-        .post("https://payment-automation.vercel.app/api/user/create", newUser)
+        .post(process.env.REACT_APP_REGISTER_API, newUser)
         .then(res => {
-            console.log(res.data);
             alert("Signup Successful", 'Redirecting...', "success");
-            // storeToken(res.data.token);
+            storeToken(res.data.token);
+            dispatch({type: SIGNUP, payload: newUser});
         })
         .catch(err => {
-            alert("Error!", err.message, "error")
-            console.log(err.message)
+            alert("Error!", "Invalid Signup Details", "error");
         });
-    dispatch({type: SIGNUP, payload: newUser});
 }
 
 export const loginUser = (oldUser) => dispatch => {
     axios
-        .post("https://payment-automation-amj1c2cpl.vercel.app/api/user/authenticate", oldUser)
+        .post(process.env.REACT_APP_LOGIN_API, oldUser)
         .then(res => {
             console.log(res.data);
         })
