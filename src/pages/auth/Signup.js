@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import signImg from '../../assets/images/signup.png';
 import  {registerUser}  from '../../redux/Actions/authActions';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
  
-const Signup = ({signup}) => {
+const Signup = (props) => {
+
+    const {isRegistered, signup} = props;
 
     const Styles = () => {
         return (
@@ -80,6 +82,7 @@ const Signup = ({signup}) => {
 
 
     const [showpassword, setShowpassword] = useState(false);
+    const [loader, setLoader] = useState(false)
 
     const formFields = {
         fullname: '',
@@ -101,12 +104,21 @@ const Signup = ({signup}) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        console.log(signupData);
+        setLoader(true);
+
+        setTimeout(() => {
+            setLoader(false);
+        },  5000)
 
         signup(signupData);
     }
+
+    if(isRegistered){
+        return <Redirect to={"/app"}/>
+    }
+
 
     return (
         <div>
@@ -151,7 +163,7 @@ const Signup = ({signup}) => {
                                     </div>
 
                                     <div className="btn_holder mt-3">
-                                        <button type="submit" className="default_btn">Signup</button>
+                                        <button type="submit" className="default_btn">{loader ?  "Loading"  :  "Signup"}</button>
                                     </div>
                                 </form>
                                   <div className="v_align mt-3">
@@ -174,4 +186,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+const mapStateToProps = (state) => {
+    return{
+        isRegistered: state.auth.isRegistered
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

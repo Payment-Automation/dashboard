@@ -36,11 +36,11 @@ export const loginUser = (oldUser) => dispatch => {
     axios
         .post(process.env.REACT_APP_LOGIN_API, oldUser)
         .then(res => {
-            console.log(res.data);
+            alert("Login Successful", "Redirecting", "success");
+            storeToken(res.data.token);
+            dispatch({type: LOGIN, payload: oldUser});
         })
         .catch(err => {
             alert("Error!", "Invalid Login Credentials", "error")
-            console.log(err.message)
         });
-    dispatch({type: LOGIN, payload: oldUser});
 }
