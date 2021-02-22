@@ -18,7 +18,7 @@ function App() {
                     <Switch>
                         <Route exact path="/register" component={Signup}/>
                         <Route exact path="/login" component={Login}/>
-                        <ProtectedRoute exact path="/app" component={Dashboard}/>
+                        <Route exact path="/app" component={Dashboard}/>
                     </Switch>
                     <ReusableStyles/>
                 </div>

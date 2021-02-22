@@ -190,6 +190,6 @@ const mapStateToProps = (state) => {
     return{
         isRegistered: state.auth.isRegistered
     }
-}
+ }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
