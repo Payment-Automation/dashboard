@@ -4,5 +4,5 @@ import dashboardReducer from './dashboardReducer';
 
 export default combineReducers({
     auth: authReducer,
-    dash: dashboardReducer
+    dashboard: dashboardReducer
 });

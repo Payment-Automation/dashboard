@@ -5,13 +5,13 @@ const initialState = {};
 const dashboardReducer = (state = initialState, action) => {
     switch (action.type) {
         case TRANSFER_FUNDS:
-            return {
+            return{
                 ...state
             }
             break;
-            
+    
         default:
-            return {
+            return{
                 ...state
             }
     }
