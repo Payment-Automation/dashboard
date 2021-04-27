@@ -1,5 +1,4 @@
 import {SIGNUP, LOGIN} from './types';
-import Swal from 'sweetalert2';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import {alert} from '../../components/reusables/alert';

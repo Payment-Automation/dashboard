@@ -8,7 +8,6 @@ const dashboardReducer = (state = initialState, action) => {
             return{
                 ...state
             }
-            break;
     
         default:
             return{

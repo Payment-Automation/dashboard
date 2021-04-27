@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {transferFunds} from '../../redux/Actions/dashboardActions';
+import InputField from '../reusables/InputField';
 import {connect} from 'react-redux';
 
 const Style = () => {
@@ -7,58 +8,34 @@ const Style = () => {
         <style jsx="true">
             {
                 ` .transfer {
-                    min-height: 100vh;
-                    background-color: #f5f5f5;
+                    min-height: 65vh;
                 }
 
                 .transferForm {
                     width: 60%;
-                    background-color: #ffff;
                     min-height: 50vh;
-                    border-radius: 7px;
-                    box-shadow: 2px 1px 8px 0 #d0d4d8;
                 }
 
                 .transferForm form {
                     width: 75%;
-                }
-
-                .formElement {
-                    border-bottom: 1px solid lightgray;
-                    width: 90%;
                     margin: 0 auto;
-                }
-
-                .formElement input {
-                    border: none;
-                    background: #fff;
-                    transition: all 0.35s ease;
-                    outline: none;
-                    width: 90%;
-                }
-
-                .formElement i {
-                    color: #95abdc;
-                }
-                .formElement:focus,
-                .formElement:hover {
-                    border-bottom: 1px solid var(--default_blue);
-                }
-
-                input::-webkit-inner-spin-button,
-                input::-webkit-outer-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-
-                input[type=number] {
-                    -moz-appearance: textfield;
                 }
 
                 .btn_holder {
                     width: fit-content;
                     width: -moz-fit-content;
                     margin: 0 auto;
+                }
+
+                @media (max-width: 766px){
+
+                    .transferForm{
+                        width: 90%;
+                    }
+
+                      .transferForm form{
+                        width: 90%;
+                    }
                 }
                  `
             }</style>
@@ -68,9 +45,9 @@ const Style = () => {
 const Transfer = ({transferFunds}) => {
 
     const [formData,
-        setFormData] = useState({amount: '', customerName: '', customerEmail: '', redirectUrl: 'https://my-merchants-page.com/transaction/confirm'});
+        setFormData] = useState({amount: '', customerName: '', customerEmail: ''});
 
-    const {amount, customerName, customerEmail, redirectUrl} = formData;
+    const {amount, customerName, customerEmail} = formData;
 
     const handleChange = (e) => {
         setFormData({
@@ -86,35 +63,41 @@ const Transfer = ({transferFunds}) => {
 
     return (
         <div>
+            <div className="mt-3 ml-3">
+                    <h2 className="section__head">Transfer Funds</h2>
+                    <p className='section__text'>Transfer Funds to another user by filling the form below.</p>
+            </div>
             <div className="transfer center">
-                <div className="transferForm center">
+                <div className="transferForm justifyCenter">
                     <form onSubmit={handleSubmit}>
                         <div className="formElement mt-3">
-                            <input
-                                type="number"
-                                onChange={handleChange}
-                                value={amount}
-                                placeholder="Amount"
-                                name="amount"
-                                required/>
+                            <InputField
+                                label='Enter Amount'
+                                formType='number'
+                                handleChange={handleChange}
+                                formValue={amount}
+                                formName='amount'
+                                placeholder='Amount'/>
                         </div>
+
                         <div className="formElement mt-3">
-                            <input
-                                type="text"
-                                onChange={handleChange}
-                                value={customerName}
-                                placeholder="Recipient's Name"
-                                name="customerName"
-                                required/>
+                            <InputField
+                                label="Enter Recipient's Name"
+                                formType='text'
+                                handleChange={handleChange}
+                                formValue={customerName}
+                                formName='customerName'
+                                placeholder="Recipient's Name"/>
                         </div>
-                        <div className="formElement mt-3">
-                            <input
-                                type="email"
-                                onChange={handleChange}
-                                value={customerEmail}
-                                name="customerEmail"
-                                placeholder="Recipient's Email"
-                                required/>
+
+                          <div className="formElement mt-3">
+                            <InputField
+                                label="Enter Recipient's Email"
+                                formType='email'
+                                handleChange={handleChange}
+                                formValue={customerEmail}
+                                formName='customerEmail'
+                                placeholder="Recipient's Email"/>
                         </div>
 
                         <div className="btn_holder mt-3">

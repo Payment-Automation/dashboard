@@ -1,14 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import ReusableStyles from './components/reusables/ReusableStyles';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/dashboard/Dashboard';
 //import ProtectedRoute from './components/reusables/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/global.css';
 
 function App() {
     return (
@@ -20,7 +18,6 @@ function App() {
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/app" component={Dashboard}/>
                     </Switch>
-                    <ReusableStyles/>
                 </div>
             </Router>
         </Provider>

@@ -1,6 +1,6 @@
 import React from 'react';
-import SideNav from '../components/dashboard/reusables/sideNav';
-import Transfer from '../components/dashboard/transfer';
+import Layout from './reusables/Layout';
+import Transfer from '../../components/dashboard/Transfer';
 
 const Styles = () => {
     return (
@@ -21,10 +21,9 @@ const Styles = () => {
 const Dashboard = () => {
     return (
         <div>
-            <SideNav/>
-            <div className='mainArea'>
+            <Layout>
                 <Transfer/>
-            </div>
+            </Layout>
             <Styles/>
         </div>
     )

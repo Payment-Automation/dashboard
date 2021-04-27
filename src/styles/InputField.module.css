@@ -1,0 +1,40 @@
+.inputField {
+    background-color: transparent;
+    border: 1px solid blue;
+    padding: 0.4em;
+    display: flex;
+    width: 80%;
+}
+
+.inputField input,
+.inputField select,
+.inputField textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.inputField select {
+    width: 95%;
+}
+
+.inputField input,
+.inputField textarea {
+    width: 90%;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+@media (max-width: 766px){
+    .inputField{
+        width: 90%;
+    }
+}

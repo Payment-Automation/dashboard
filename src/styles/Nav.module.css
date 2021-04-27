@@ -1,0 +1,39 @@
+.sideNav {
+    position: fixed;
+    min-height: 100vh;
+    background-color: blue;
+    z-index: 99999;
+    width: 0;
+    overflow: hidden;
+}
+
+.sideNav.open {
+    width: 170px;
+    transition: all 0.3s ease;
+}
+
+.mainContent.open {
+    padding-left: 170px;
+    transition: all 0.3s ease;
+}
+
+.navBar {
+    background-color: #fff;
+    box-shadow: 0 0 8px lightgrey;
+    min-height: 10vh;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 766px) {
+    .sideNav.open {
+        width: 85px;
+    }
+
+    .mainContent.open {
+        padding-left: 85px;
+    }
+}
