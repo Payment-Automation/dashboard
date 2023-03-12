@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import signImg from '../../assets/images/signup.png';
@@ -190,6 +190,6 @@ const mapStateToProps = (state) => {
     return{
         isRegistered: state.auth.isRegistered
     }
-}
+ }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

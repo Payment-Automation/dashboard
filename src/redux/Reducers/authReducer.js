@@ -12,15 +12,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isRegistered: true
             }
-            break
-
         case LOGIN:
             return {
                 ...state,
                 isLoggedIn: true
             }
-            break
-
+            
         default:
             return {
                 ...state

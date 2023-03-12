@@ -1,19 +1,7 @@
 import {SIGNUP, LOGIN} from './types';
-import Swal from 'sweetalert2';
 import axios from 'axios';
 import cookie from 'react-cookies'
-
-const alert = (title, text, icon) => {
-    Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000
-    });
-}
+import {alert} from '../../components/reusables/alert';
 
 const storeToken = (token) => {
    cookie.save('token', token, { httpOnly: true,  path: '/'})
